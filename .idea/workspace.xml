@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a376829d-1f9a-426f-a909-6e2d60032bf8" name="Changes" comment="track gym app commit">
+      <change afterPath="$PROJECT_DIR$/core-gym-app/src/main/resources/logback.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "aleksandr2110"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/aleksandr2110/gym-crm-app",
+    "accountId": "10125345-5364-4146-bc1c-5b6b0169fea5"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3IVAgFsUY2678kOW2NvGERPfJqP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.EurekaServerApplication.executor": "Run",
+    "Application.GymApplication.executor": "Run",
+    "Application.TrackApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Aleksandr/IdeaProjects/gym-crm-app/core-gym-app/src/test/java",
+    "onboarding.tips.debug.path": "C:/Users/Aleksandr/IdeaProjects/gym-crm-app/track-gym-app/src/main/java/epam/Main.java"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app\core-gym-app\src\test\java" />
+      <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app" />
+      <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app\track-gym-app" />
+      <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app\eureka-server" />
+      <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app\core-gym-app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TrackApplication">
+    <configuration name="EurekaServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="epam.EurekaServerApplication" />
+      <module name="eureka-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="epam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GymApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="epam.GymApplication" />
+      <module name="core-gym-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="epam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="epam.TrackApplication" />
+      <module name="track-gym-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="epam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TrackApplication" />
+        <item itemvalue="Application.GymApplication" />
+        <item itemvalue="Application.EurekaServerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a376829d-1f9a-426f-a909-6e2d60032bf8" name="Changes" comment="" />
+      <created>1787839471508</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1787839471508</updated>
+    </task>
+    <task id="LOCAL-00001" summary="firstcommit">
+      <option name="closed" value="true" />
+      <created>1788002919007</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1788002919007</updated>
+    </task>
+    <task id="LOCAL-00002" summary="second commit">
+      <option name="closed" value="true" />
+      <created>1788003188932</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1788003188932</updated>
+    </task>
+    <task id="LOCAL-00003" summary="core gym app commit">
+      <option name="closed" value="true" />
+      <created>1788003589905</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1788003589905</updated>
+    </task>
+    <task id="LOCAL-00004" summary="track gym app commit">
+      <option name="closed" value="true" />
+      <created>1788003720828</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1788003720828</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="firstcommit" />
+    <MESSAGE value="second commit" />
+    <MESSAGE value="core gym app commit" />
+    <MESSAGE value="track gym app commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="track gym app commit" />
+  </component>
+</project>
