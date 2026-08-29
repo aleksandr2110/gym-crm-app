@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a376829d-1f9a-426f-a909-6e2d60032bf8" name="Changes" comment="track gym app commit">
-      <change afterPath="$PROJECT_DIR$/core-gym-app/src/main/resources/logback.xml" afterDir="false" />
+    <list default="true" id="a376829d-1f9a-426f-a909-6e2d60032bf8" name="Changes" comment=".idea commit 2">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +158,23 @@
       <option name="project" value="LOCAL" />
       <updated>1788003720828</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".idea commit">
+      <option name="closed" value="true" />
+      <created>1788003972110</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788003972110</updated>
+    </task>
+    <task id="LOCAL-00006" summary=".idea commit 2">
+      <option name="closed" value="true" />
+      <created>1788004068379</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1788004068379</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -164,6 +182,8 @@
     <MESSAGE value="second commit" />
     <MESSAGE value="core gym app commit" />
     <MESSAGE value="track gym app commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="track gym app commit" />
+    <MESSAGE value=".idea commit" />
+    <MESSAGE value=".idea commit 2" />
+    <option name="LAST_COMMIT_MESSAGE" value=".idea commit 2" />
   </component>
 </project>
