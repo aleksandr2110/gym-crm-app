@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="create_training_types" author="Oleksandr@DevDB">
+        <createTable tableName="training_types">
+            <column name="id" type="bigint" >
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="training_type_name" type ="varchar(80)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="crate_trainings" author="Oleksandr@DevDB">
+        <createTable tableName="trainings" >
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="trainee_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="trainer_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="training_name" type="varchar(60)">
+                <constraints nullable="true" />
+            </column>
+            <column name="training_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="training_date" type ="TIMESTAMP">
+                <constraints nullable="true" />
+            </column>
+            <column name="training_duration" type ="int">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_users" author="Oleksandr@DevDB">
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="first_name" type="varchar(60)">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_name" type ="varchar(60)">
+                <constraints nullable="true" />
+            </column>
+            <column name="username" type ="varchar(80)">
+                <constraints nullable="true" />
+            </column>
+            <column name="password" type ="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_active" type ="boolean">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_trainees" author="Oleksandr@DevDB">
+        <createTable tableName="trainees" remarks="users">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="first_name" type="varchar(60)">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_name" type ="varchar(60)">
+                <constraints nullable="true" />
+            </column>
+            <column name="username" type ="varchar(80)">
+                <constraints nullable="true" />
+            </column>
+            <column name="password" type ="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_active" type ="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_birth" type ="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="address" type ="varchar(80)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_trainers" author="Oleksandr@DevDB">
+        <createTable tableName="trainers" remarks="users">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="first_name" type="varchar(60)">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_name" type ="varchar(60)">
+                <constraints nullable="true" />
+            </column>
+            <column name="username" type ="varchar(80)">
+                <constraints nullable="true" />
+            </column>
+            <column name="password" type ="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_active" type ="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="specialization_id" type ="bigint">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_trainers_trainees" author="Oleksandr@DevDB">
+         <createTable tableName="trainers_trainees">
+             <column name="trainee_id" type="bigint">
+                 <constraints nullable="false" />
+             </column>
+             <column name="trainer_id" type="bigint">
+                 <constraints nullable="false" />
+             </column>
+         </createTable>
+    </changeSet>
+
+    <changeSet id="create_roles" author="Oleksandr@DevDB">
+        <createTable tableName="roles">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type ="varchar(70)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_users_roles" author="Oleksandr@DevDB">
+        <createTable tableName="users_roles">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="role_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="tag-1.0" author="Oleksandr@DevDB">
+        <tagDatabase tag="1.0" />
+    </changeSet>
+
+</databaseChangeLog>

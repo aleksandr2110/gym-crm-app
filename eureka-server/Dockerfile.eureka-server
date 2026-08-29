@@ -1,0 +1,25 @@
+FROM maven:3.9.8-amazoncorretto-17 AS build
+
+WORKDIR /eureka-server/
+
+COPY pom.xml ./
+
+COPY .mvn .mvn
+
+COPY src ./src
+
+RUN mvn clean package
+
+FROM eclipse-temurin:17.0.5_8-jre-focal
+
+LABEL Description="Eureka Server" Version="0.0.1"
+
+ARG VERSION=0.0.1
+
+WORKDIR /eureka/
+
+VOLUME /tmp
+
+COPY --from=build /eureka-server/target/eureka-server-1.0-SNAPSHOT.jar eureka-server.jar
+
+ENTRYPOINT ["java", "-jar", "eureka-server.jar"]

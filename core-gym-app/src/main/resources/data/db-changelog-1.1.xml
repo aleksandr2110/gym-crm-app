@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="add-fk-between-user-and-trainee" author="Oleksandr@DevDB">
+        <addForeignKeyConstraint baseTableName="trainees"
+                                 baseColumnNames="id"
+                                 constraintName="fk_trainees_users_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="add-fk-between-user-and-trainer" author="Oleksandr@DevDB">
+        <addForeignKeyConstraint baseTableName="trainers"
+                                 baseColumnNames="id"
+                                 constraintName="fk_trainers_users_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <!-- training training_type_id - foreign key -->
+    <!-- training_type id - primary key -->
+    <changeSet id="add-fk-between-training-type-and-training" author="Oleksandr@DevDB">
+        <addForeignKeyConstraint constraintName="fk_training_training_types"
+                                 baseTableName="trainings"
+                                 baseColumnNames="training_type_id"
+                                 referencedTableName="training_types"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+    <changeSet id="add-fk-between-trainer-and-training-type" author="Oleksandr@DevDB">
+        <addForeignKeyConstraint constraintName="fk_trainer_and_training_type"
+                                 baseTableName="trainers"
+                                 baseColumnNames="specialization_id"
+                                 referencedTableName="training_types"
+                                 referencedColumnNames="id" />
+
+    </changeSet>
+
+    <!-- training training_type_id - foreign key -->
+    <!-- training_type id - primary key -->
+    <changeSet id="add-fk-between-trainee-and-training" author="Oleksandr@DevDB">
+        <addForeignKeyConstraint constraintName="fk_trainee_training"
+                                 baseTableName="trainings"
+                                 baseColumnNames="trainee_id"
+                                 referencedTableName="trainees"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+    <changeSet id="add-fk-between-trainer-and-training" author="Oleksandr@DevDB">
+        <addForeignKeyConstraint constraintName="fk_trainer_training"
+                                 baseTableName="trainings"
+                                 baseColumnNames="trainer_id"
+                                 referencedTableName="trainers"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+    <changeSet id="add-fk-between-trainer-and-trainee" author="Oleksandr@DevDB">
+
+    <!-- Add Composite Primary Key to prevent duplicate relationships -->
+    <addPrimaryKey tableName="trainers_trainees"
+                   columnNames="trainee_id, trainer_id"
+                   constraintName="pk_trainers_trainees"/>
+
+    <!-- Add Foreign Key Constraint for Table 1 -->
+    <addForeignKeyConstraint baseTableName="trainers_trainees"
+                             baseColumnNames="trainee_id"
+                             referencedTableName="trainees"
+                             referencedColumnNames="id"
+                             constraintName="fk_trainees_trainers_trainees"
+                             onDelete="CASCADE"/>
+
+    <!-- Add Foreign Key Constraint for Table 2 -->
+    <addForeignKeyConstraint baseTableName="trainers_trainees"
+                             baseColumnNames="trainer_id"
+                             referencedTableName="trainers"
+                             referencedColumnNames="id"
+                             constraintName="fk_trainers_trainers_trainees"
+                             onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="add-fk-between-user-and-role" author="Oleksandr@DevDB">
+
+        <addPrimaryKey tableName="users_roles"
+                       columnNames="user_id, role_id"
+                       constraintName="pk_user_roles"/>
+
+        <addForeignKeyConstraint baseTableName="users_roles"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_users_roles_users"
+                                 onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseTableName="users_roles"
+                                 baseColumnNames="role_id"
+                                 referencedTableName="roles"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_users_roles_roles"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="tag-1.1" author="Oleksandr@DevDB">
+        <tagDatabase tag="1.1" />
+    </changeSet>
+
+</databaseChangeLog>

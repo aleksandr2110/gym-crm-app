@@ -1,0 +1,89 @@
+services:
+  mysql:
+    image: mysql:8.0.32
+    mem_limit: 512m
+    ports:
+      - "3307:3307"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=service
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pwd
+    healthcheck:
+      test: "/usr/bin/mysql --user=user --password=pwd --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 60
+    networks:
+      - microservice-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - monitoring
+
+  eureka-server:
+    container_name: eureka-server
+    build:
+      context: eureka-server/
+      dockerfile: Dockerfile.eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - microservice-network
+
+  gym-app:
+    build:
+      context: core-gym-app/
+      dockerfile: Dockerfile.core-gym-app
+    container_name: core-gym-app
+    ports:
+      - "8081:8081"
+    restart: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+      - prometheus
+    networks:
+      - microservice-network
+      - monitoring
+
+  track-gym-app:
+    container_name: work-load-service
+    build:
+      context: track-gym-app/
+      dockerfile: Dockerfile.track-gym-app
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - microservice-network
+
+
+networks:
+  monitoring:
+    driver: bridge
+  microservice-network:
+    driver: bridge
+
+volumes:
+  prometheus-data:
