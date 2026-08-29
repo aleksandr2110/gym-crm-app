@@ -1,0 +1,108 @@
+spring:
+  application:
+    name: workload-service
+
+server:
+  port: 8083
+
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:mem:monitoringdb;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    tags-sorter: alpha
+    operations-sorter: alpha
+  packages-to-scan: epam.controller
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+    prometheus:
+      access: read_only
+    metrics:
+      access: read_only
+  metrics:
+    tags:
+      application: workload-service
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+  resilience4j:
+    circuitbreaker:
+      configs:
+        default:
+          sliding-window-type: count_based
+          register-health-indicator: true
+          sliding-window-size: 10
+          minimum-number-of-calls: 5
+          permitted-number-of-calls-in-half-open-state: 3
+          automatic-transition-from-open-to-half-open-enabled: true
+          wait-duration-in-open-state: 5s
+          failure-rate-threshold: 50
+          slow-call-rate-threshold: 50
+          slow-call-duration-threshold: 2s
+          event-consumer-buffer-size: 10
+          record-exceptions:
+            - java.io.IOException
+            - feign.FeignException
+          ignore-exceptions:
+            - java.lang.IllegalArgumentException
+      instances:
+        workloadService:
+          base-config: default
+    retry:
+      instances:
+        workloadService:
+          max-attempts: 3
+          wait-duration: 500ms
+          retry-exceptions:
+            - java.io.IOException
+            - feign.RetryableException
+
+logging:
+  level:
+    root: INFO
+    epam.workload: DEBUG
+  file:
+    name: logs/workload-service.log
