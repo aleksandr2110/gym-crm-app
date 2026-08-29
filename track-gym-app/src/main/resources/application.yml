@@ -1,3 +1,7 @@
+spring:
+  application:
+    name: workload-service
+
 server:
   port: 8083
 
@@ -102,3 +106,6 @@ logging:
     epam.workload: DEBUG
   file:
     name: logs/workload-service.log
+
+
+spring.config.activate.on-profile: docker

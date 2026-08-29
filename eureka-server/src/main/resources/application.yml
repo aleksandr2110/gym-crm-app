@@ -7,3 +7,5 @@ server:
 eureka:
   client:
     register-with-eureka: false
+
+spring.config.activate.on-profile: docker
