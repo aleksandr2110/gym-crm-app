@@ -1,0 +1,1 @@
+INSERT INTO training_types (id, training_type_name) values (1, 'JAVA'), (2, 'C'), (3, 'PYTHON'), (4, 'ANGULAR'), (5, 'REACT'), (6, 'JAVASCRIPT'), (7, 'TYPESCRIPT'), (8, 'PHP'), (9, 'BA'), (10, 'QA'), (11, 'DEVOPS');
