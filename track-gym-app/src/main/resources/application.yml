@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: workload-service
-
 server:
   port: 8083
 

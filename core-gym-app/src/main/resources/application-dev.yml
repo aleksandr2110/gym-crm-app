@@ -6,7 +6,7 @@ spring:
     name: core-gym-app
   datasource:
     username: user
-    password: pwd
+    password: password_secret
     url: jdbc:mysql://localhost:3307/service?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
