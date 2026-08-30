@@ -1,6 +1,6 @@
 server:
   port: 8081
-
+#  mysql:3307 is a service in docker-compose
 spring:
   application:
     name: core-gym-app
