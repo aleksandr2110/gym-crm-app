@@ -7,9 +7,9 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['gym-app:8080']
+      - targets: ['gym-app:8083']
         labels:
-          application: 'gym-crm-system'
+          application: 'core-gym-app'
           environment: 'production'
 
   - job_name: 'prometheus'
