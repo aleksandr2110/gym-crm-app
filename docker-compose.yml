@@ -19,6 +19,14 @@ services:
     networks:
       - microservice-network
 
+    activemq:
+      image: apache/activemq-classic:latest
+      container_name: activemq
+      ports:
+        - "61616:61616" # JMS Broker Port
+        - "8161:8161"   # Web Console Port
+      restart: always
+
     prometheus:
       image: prom/prometheus:latest
       container_name: prometheus
@@ -57,7 +65,7 @@ services:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
       - eureka-server
-          - prometheus
+      - prometheus
     networks:
       - microservice-network
       - monitoring

@@ -2,23 +2,22 @@ spring:
   application:
     name: workload-service
 
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+
 server:
   port: 8083
 
-  datasource:
-    username: sa
-    password:
-    url: jdbc:h2:mem:monitoringdb;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
-    driver-class-name: org.h2.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-        format_sql: true
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.H2Dialect
+#        format_sql: true
 
 springdoc:
   api-docs:

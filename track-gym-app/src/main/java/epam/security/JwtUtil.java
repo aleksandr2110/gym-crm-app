@@ -1,11 +1,14 @@
 package epam.security;
 
 
+import epam.util.YamlPropertySourceFactory;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -13,6 +16,8 @@ import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @Component
+@ConfigurationProperties(prefix = "yaml")
+@PropertySource(value = "classpath:application.yml", factory = YamlPropertySourceFactory.class)
 public class JwtUtil {
 
     private final SecretKey secretKey;

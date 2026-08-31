@@ -5,6 +5,7 @@ import epam.domain.model.TrainerWorkload;
 import epam.domain.repo.WorkloadRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -30,7 +31,6 @@ public class WorkloadService {
 
         workload.setFirstName(request.getFirstName());
         workload.setLastName(request.getLastName());
-        workload.setIsActive(request.getIsActive());// delete
 
         int year = request.getTrainingDate().getYear();
         int month = request.getTrainingDate().getMonthValue();

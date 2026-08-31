@@ -1,10 +1,16 @@
 spring:
   application:
     name: gym-crm-system
+
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+
   datasource:
-    username: user
-    password: password_secret
-    url: jdbc:mysql://localhost:3307/rest?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: sqlpas
+    url: jdbc:mysql://localhost:3306/service?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -13,11 +19,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-
-#  activemq:
-#    broker-url: tcp://localhost:61616
-#    user: admin
-#    password: admin
 
   liquibase:
     enabled: true

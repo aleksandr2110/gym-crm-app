@@ -12,7 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Configuration
 public class FeignClientConfiguration {
 
-    @Bean
+    /*@Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -31,5 +31,5 @@ public class FeignClientConfiguration {
                 log.warn("No request attributes available for Feign request");
             }
         };
-    }
+    }*/
 }

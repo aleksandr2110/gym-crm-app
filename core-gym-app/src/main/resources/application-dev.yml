@@ -1,6 +1,11 @@
 server:
   port: 8081
 
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+
 spring:
   application:
     name: core-gym-app
