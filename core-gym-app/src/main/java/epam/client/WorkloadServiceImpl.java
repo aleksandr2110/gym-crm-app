@@ -1,5 +1,6 @@
 package epam.client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import epam.domain.dto.request.WorkloadRequest;
 import epam.service.WorkloadService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class WorkloadServiceImpl implements WorkloadService {
     private final WorkloadServiceClient workloadServiceClient;
 
     @Override
-    public void updateWorkload(WorkloadRequest request) {
+    public void updateWorkload(WorkloadRequest request)  {
         workloadServiceClient.sendWorkloadUpdate(request);
     }
 

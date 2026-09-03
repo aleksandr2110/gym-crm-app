@@ -1,6 +1,6 @@
 package epam.controller;
 
-import epam.domain.dto.WorkloadRequest;
+import epam.domain.dto.request.WorkloadRequest;
 import epam.domain.model.TrainerWorkload;
 import epam.service.WorkloadService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -55,7 +55,7 @@ public class TrainingServiceImpl implements TrainingService {
         trainingMetrics.incrementTrainingCreated();
         trainingMetrics.incrementActiveTrainings();
 
-        workloadService.updateWorkload(WorkloadRequestMapper.fromTraining(training, WorkloadRequest.ActionType.ADD));
+        workloadService.updateWorkload(WorkloadRequestMapper.fromTraining(training, "add"));
     }
 
     @Override

@@ -1,11 +1,10 @@
 package epam.service;
 
-import epam.domain.dto.WorkloadRequest;
+import epam.domain.dto.request.WorkloadRequest;
 import epam.domain.model.TrainerWorkload;
 import epam.domain.repo.WorkloadRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -37,12 +36,12 @@ public class WorkloadService {
         int duration = request.getTrainingDuration();
 
         switch (request.getActionType()) {
-            case ADD:
+            case "add":
                 log.debug("Adding {} minutes to {}-{} for trainer {}",
                         duration, year, month, request.getUsername());
                 workload.updateWorkload(year, month, duration);
                 break;
-            case DELETE:
+            case "delete":
                 log.debug("Removing {} minutes from {}-{} for trainer {}",
                         duration, year, month, request.getUsername());
                 workload.updateWorkload(year, month, -duration);

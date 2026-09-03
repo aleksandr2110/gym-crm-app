@@ -1,6 +1,11 @@
 package epam.client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import epam.domain.dto.request.WorkloadRequest;
+import epam.domain.dto.request.WorkloadRequestTwo;
+import jakarta.jms.TextMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +31,16 @@ public class WorkloadServiceClient {
         try {
             log.info("Sending workload message to ActiveMQ. Action: {}, Trainer: {}",
                     workloadRequest.getActionType(), workloadRequest.getUsername());
+            ObjectMapper mapper = new ObjectMapper();
+            //mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            log.info("before writing " + workloadRequest.toString());
+            WorkloadRequestTwo workload = new WorkloadRequestTwo(workloadRequest.getUsername(),
+                    workloadRequest.getFirstName(), workloadRequest.getLastName(), workloadRequest.getIsActive(),
+                    workloadRequest.getTrainingDate(), workloadRequest.getTrainingDuration(), workloadRequest.getActionType());
+
+            //String jsonObj = mapper.writeValueAsString(workload);
+            String jsonObj = mapper.writer().withDefaultPrettyPrinter().writeValueAsString(workload);
+            log.info("after writing jsonObj: " + jsonObj);
 
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
@@ -37,8 +52,16 @@ public class WorkloadServiceClient {
                 log.info("token to pass {}", jwtToken);
 
             String transactionId = MDC.get("transactionId");
+            log.info("in the block");
 
-            jmsTemplate.convertAndSend(QUEUE_NAME, workloadRequest,
+                jmsTemplate.send(QUEUE_NAME, messageCreator -> {
+                    TextMessage message = messageCreator.createTextMessage();
+                    message.setText(jsonObj);
+                    return message;
+                });
+
+            }
+            /*jmsTemplate.convertAndSend(QUEUE_NAME, workloadRequest,
                     message -> {
                         if (transactionId != null) {
                             message.setStringProperty("Authorization", "Bearer " + jwtToken);
@@ -46,12 +69,14 @@ public class WorkloadServiceClient {
                         }
                         return message;
                     });
-            }
+            } */
 
             log.info("Workload message sent successfully for trainer: {}", workloadRequest.getUsername());
-        } catch (AmqpException ex) {
+        } catch (AmqpException ex ) {
             log.error("Failed to send workload message to ActiveMQ. Action: {}, Trainer: {}. Error: {}",
                     workloadRequest.getActionType(), workloadRequest.getUsername(), ex.getMessage());
+        } catch (JsonProcessingException js) {
+            log.error("Failed to serialize object to JSON");
         }
     }
 

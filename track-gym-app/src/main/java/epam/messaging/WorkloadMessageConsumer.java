@@ -1,21 +1,23 @@
 package epam.messaging;
 
-import epam.controller.exception.UnauthorizedException;
-import epam.domain.dto.WorkloadRequest;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import epam.domain.dto.request.WorkloadRequest;
 import epam.security.JwtUtil;
 import epam.service.WorkloadService;
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.TextMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
-import org.springframework.messaging.handler.annotation.Header;
-
-import java.util.ArrayList;
-import java.util.UUID;
 
 @Slf4j
 @Component
@@ -24,12 +26,45 @@ public class WorkloadMessageConsumer {
 
     private final WorkloadService workloadService;
     private final JwtUtil jwtUtil;
+    private final ObjectMapper objectMapper;
 
     @JmsListener(destination = "workload.queue")
-    public void receiveWorkloadMessage(WorkloadRequest request, @Header("Authorization") String token,
+    public String receiveMessageFromQueue(final Message jsonMessage) throws JMSException {
+        String jsonPayload = null;
+        System.out.println("Received message " + jsonMessage);
+//        objectMapper = JsonMapper.builder()
+//                .addModule(new ParameterNamesModule())
+//                .build();
+
+        try {
+            if (jsonMessage instanceof TextMessage) {
+                TextMessage textMessage = (TextMessage) jsonMessage;
+                jsonPayload = textMessage.getText();
+                System.out.println("messageData:" + jsonPayload);
+                objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+                objectMapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
+                //objectMapper.configure(DeserializationConfig.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
+                //WorkloadRequest myObject = objectMapper.readValue(jsonPayload, WorkloadRequest.class);
+                WorkloadRequest myObject = objectMapper.readValue(jsonPayload, new TypeReference<WorkloadRequest>() {});
+                System.out.println("mapper reading " + myObject.toString());
+            }
+        } catch (JsonMappingException e) {
+            throw new RuntimeException(e);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return jsonPayload;
+    }
+
+
+    //@JmsListener(destination = "workload.queue")
+    //@JmsListener(destination = "workload.queue", containerFactory = "jmsFactory")
+    /*public void receiveWorkloadMessage(@Payload WorkloadRequest request, @Header("Authorization") String token,
                                        @Header(name = "transactionId", required = false) String transactionId) {
 
         log.info("Receiving data via workload.queue");
+//        ObjectMapper mapper = new ObjectMapper();
+//        WorkloadRequest object = mapper.readValue(request, WorkloadRequest.class); // jsonPayload
         if (token == null || !token.startsWith("Bearer ")) {
             log.warn("No Bearer token found for destination queue: workload.queue");
             throw new UnauthorizedException("Trainer is not authenticated");
@@ -41,10 +76,10 @@ public class WorkloadMessageConsumer {
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             log.info("Validating JWT token for user: {}", username);
             if (jwtUtil.validateToken(jwt)) {
-                UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
+//                UsernamePasswordAuthenticationToken authToken =
+//                        new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
                 //authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authToken);
+                //SecurityContextHolder.getContext().setAuthentication(authToken);
                 log.info("JWT authentication successful for user: {}", username);
                 throw new UnauthorizedException("Trainer is not authenticated");
             } else {
@@ -76,7 +111,7 @@ public class WorkloadMessageConsumer {
         } finally {
             MDC.remove("transactionId");
         }
-    }
+    } */
 
     private void validateRequest(WorkloadRequest request) {
         if (request.getUsername() == null || request.getUsername().isBlank()) {
