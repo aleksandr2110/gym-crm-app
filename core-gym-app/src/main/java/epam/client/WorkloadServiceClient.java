@@ -1,10 +1,8 @@
 package epam.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import epam.domain.dto.request.WorkloadRequest;
-import epam.domain.dto.request.WorkloadRequestTwo;
 import jakarta.jms.TextMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -34,13 +32,12 @@ public class WorkloadServiceClient {
             ObjectMapper mapper = new ObjectMapper();
             //mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             log.info("before writing " + workloadRequest.toString());
-            WorkloadRequestTwo workload = new WorkloadRequestTwo(workloadRequest.getUsername(),
-                    workloadRequest.getFirstName(), workloadRequest.getLastName(), workloadRequest.getIsActive(),
-                    workloadRequest.getTrainingDate(), workloadRequest.getTrainingDuration(), workloadRequest.getActionType());
 
+            //mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             //String jsonObj = mapper.writeValueAsString(workload);
-            String jsonObj = mapper.writer().withDefaultPrettyPrinter().writeValueAsString(workload);
+            String jsonObj = mapper.writer().withDefaultPrettyPrinter().writeValueAsString(workloadRequest);
             log.info("after writing jsonObj: " + jsonObj);
+            //String json = "{\"username\":\"Ricci.Deep7\", \"firstName\":\"Ricci\", \"lastName\":\"Deep7\", \"isActive\":true, \"trainingDate\":\"2026-06-12T18:30\", \"trainingDuration\":60, \"actionType\":\"add\"}";
 
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
@@ -57,6 +54,7 @@ public class WorkloadServiceClient {
                 jmsTemplate.send(QUEUE_NAME, messageCreator -> {
                     TextMessage message = messageCreator.createTextMessage();
                     message.setText(jsonObj);
+                    //message.setText(json);
                     return message;
                 });
 
@@ -78,7 +76,7 @@ public class WorkloadServiceClient {
         } catch (JsonProcessingException js) {
             log.error("Failed to serialize object to JSON");
         }
+        //}
     }
-
 
 }
