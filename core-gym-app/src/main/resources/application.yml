@@ -2,9 +2,9 @@ spring:
   application:
     name: core-gym-app
   datasource:
-    username: user
-    password: password_secret
-    url: jdbc:mysql://mysql:3307/rest?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: sqlpas
+    url: jdbc:mysql://localhost:3306/service?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -29,6 +29,12 @@ spring:
             read-timeout: 5000
             logger-level: basic
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
   expiration: 8640000
@@ -43,44 +49,10 @@ eureka:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 30
 
-resilience4j:
-  circuitbreaker:
-    configs:
-      default:
-        sliding-window-type: count_based
-        register-health-indicator: true
-        sliding-window-size: 10
-        minimum-number-of-calls: 5
-        permitted-number-of-calls-in-half-open-state: 3
-        automatic-transition-from-open-to-half-open-enabled: true
-        wait-duration-in-open-state: 5s
-        failure-rate-threshold: 50
-        slow-call-rate-threshold: 50
-        slow-call-duration-threshold: 2s
-        event-consumer-buffer-size: 10
-        record-exceptions:
-          - java.io.IOException
-          - feign.FeignException
-        ignore-exceptions:
-          - java.lang.IllegalArgumentException
-    instances:
-      workloadService:
-        base-config: default
-  retry:
-    instances:
-      workloadService:
-        max-attempts: 3
-        wait-duration: 500ms
-        retry-exceptions:
-          - java.io.IOException
-          - feign.RetryableException
-
-
   jackson:
     deserialization:
       fail-on-unknown-properties: false
       accept-single-value-as-array: true
-
 
 
 management:

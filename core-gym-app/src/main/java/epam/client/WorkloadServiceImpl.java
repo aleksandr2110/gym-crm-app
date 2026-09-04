@@ -17,14 +17,7 @@ public class WorkloadServiceImpl implements WorkloadService {
     private final WorkloadServiceClient workloadServiceClient;
 
     @Override
-    @Retry(name = "workloadService")
-    @CircuitBreaker(name = "workloadService", fallbackMethod = "fallbackUpdate")
     public void updateWorkload(WorkloadRequest request) {
-        workloadServiceClient.updateWorkload(request);
-    }
-
-    private void fallbackUpdate(WorkloadRequest request, Throwable ex) {
-        log.error("Workload service unavailable. Action: {}, Trainer: {}. Error: {}",
-                request.getActionType(), request.getUsername(), ex.getMessage());
+        workloadServiceClient.sendWorkloadUpdate(request);
     }
 }

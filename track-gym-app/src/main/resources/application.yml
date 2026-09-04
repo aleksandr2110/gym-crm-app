@@ -5,6 +5,17 @@ spring:
 server:
   port: 8083
 
+#  rabbitmq:
+#    host: rabbitmq
+#    port: 5672
+#    username: guest
+#    password: guest
+#    listener:
+#      simple:
+#        concurrency: 3
+#        max-concurrency: 2
+#        prefetch: 1
+
   datasource:
     username: sa
     password:
@@ -67,38 +78,6 @@ management:
     metrics:
       export:
         enabled: true
-
-  resilience4j:
-    circuitbreaker:
-      configs:
-        default:
-          sliding-window-type: count_based
-          register-health-indicator: true
-          sliding-window-size: 10
-          minimum-number-of-calls: 5
-          permitted-number-of-calls-in-half-open-state: 3
-          automatic-transition-from-open-to-half-open-enabled: true
-          wait-duration-in-open-state: 5s
-          failure-rate-threshold: 50
-          slow-call-rate-threshold: 50
-          slow-call-duration-threshold: 2s
-          event-consumer-buffer-size: 10
-          record-exceptions:
-            - java.io.IOException
-            - feign.FeignException
-          ignore-exceptions:
-            - java.lang.IllegalArgumentException
-      instances:
-        workloadService:
-          base-config: default
-    retry:
-      instances:
-        workloadService:
-          max-attempts: 3
-          wait-duration: 500ms
-          retry-exceptions:
-            - java.io.IOException
-            - feign.RetryableException
 
 logging:
   level:
