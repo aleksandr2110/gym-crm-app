@@ -1,6 +1,5 @@
 package epam.client;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import epam.domain.dto.request.WorkloadRequest;
 import epam.service.WorkloadService;
 import lombok.RequiredArgsConstructor;

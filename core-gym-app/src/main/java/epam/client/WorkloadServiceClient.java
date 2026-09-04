@@ -30,10 +30,8 @@ public class WorkloadServiceClient {
             log.info("Sending workload message to ActiveMQ. Action: {}, Trainer: {}",
                     workloadRequest.getActionType(), workloadRequest.getUsername());
             ObjectMapper mapper = new ObjectMapper();
-            //mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             log.info("before writing " + workloadRequest.toString());
 
-            //mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             //String jsonObj = mapper.writeValueAsString(workload);
             String jsonObj = mapper.writer().withDefaultPrettyPrinter().writeValueAsString(workloadRequest);
             log.info("after writing jsonObj: " + jsonObj);
