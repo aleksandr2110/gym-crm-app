@@ -1,9 +1,5 @@
 package epam.domain.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,64 +9,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Schema(description = "Request payload for updating trainer workload")
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class WorkloadRequest implements Serializable { // implements Serializable
+@NoArgsConstructor
+@AllArgsConstructor
+@Schema(description = "Request payload for updating trainer workload")
+public class WorkloadRequest {
 
-    @JsonProperty("username")
-    private String username;
-    @JsonProperty("firstName")
-    private String firstName;
-    @JsonProperty("lastName")
-    private String lastName;
-    @JsonProperty("isActive")
-    private Boolean isActive;
-    @JsonProperty("trainingDate")
-    private LocalDateTime trainingDate;
-    @JsonProperty("trainingDuration")
-    private Integer trainingDuration;
-    @JsonProperty("actionType")
-    private String actionType;
-
-    @JsonCreator
-    public WorkloadRequest() { }
-
-    @JsonCreator
-    public WorkloadRequest(@JsonProperty("username") String username,  @JsonProperty("firstName") String firstName,
-                           @JsonProperty("lastName") String lastName, @JsonProperty("isActive") Boolean isActive,
-                           @JsonProperty("trainingDate") LocalDateTime trainingDate,
-                           @JsonProperty("trainingDuration") Integer trainingDuration,
-                           @JsonProperty("actionType") String actionType) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.isActive = isActive;
-        this.trainingDate = trainingDate;
-        this.trainingDuration = trainingDuration;
-        this.actionType = actionType;
-    }
-
-    /*@JsonValue
-    public ActionType getActionType() {
-        return actionType;
-    }
-    @AllArgsConstructor(onConstructor_ = @JsonCreator(mode = JsonCreator.Mode.DELEGATING))
-    public enum ActionType {
-        ADD, DELETE;
-
-        @JsonCreator
-        public static ActionType fromString(String value) {
-            return ActionType.valueOf(value.toUpperCase());
-        }
-    } */
-    /*@Schema(description = "Trainer's unique username", example = "Jeremi.Mann")
+    @Schema(description = "Trainer's unique username", example = "Jeremi.Mann")
     @NotBlank(message = "Username is required")
     private String username;
 
@@ -104,11 +52,6 @@ public class WorkloadRequest implements Serializable { // implements Serializabl
         @Schema(description = "Add training session")
         ADD,
         @Schema(description = "Delete training session")
-        DELETE;
-        @JsonCreator
-        public static ActionType fromString(String value) {
-            return ActionType.valueOf(value.toUpperCase());
-        }
-    } */
-
+        DELETE
+    }
 }

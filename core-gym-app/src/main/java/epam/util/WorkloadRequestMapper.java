@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WorkloadRequestMapper {
 
-    public static WorkloadRequest fromTraining(Training training, String action) {
+    public static WorkloadRequest fromTraining(Training training, WorkloadRequest.ActionType actionType) {
         return WorkloadRequest.builder()
                 .username(training.getTrainer().getUsername())
                 .firstName(training.getTrainer().getFirstName())
@@ -15,7 +15,7 @@ public class WorkloadRequestMapper {
                 .isActive(training.getTrainer().isActive())
                 .trainingDate(training.getTrainingDate())
                 .trainingDuration(training.getTrainingDuration())
-                .actionType(action)
+                .actionType(actionType)
                 .build();
     }
 }

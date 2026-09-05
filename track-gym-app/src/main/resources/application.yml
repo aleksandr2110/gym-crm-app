@@ -6,8 +6,6 @@ spring:
     broker-url: tcp://localhost:61616
     user: admin
     password: admin
-#    packages:
-#      trusted: epam.domain.dto.request
 
 server:
   port: 8083
@@ -33,16 +31,6 @@ springdoc:
   packages-to-scan: epam.controller
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
-
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:8761/eureka/
-#    register-with-eureka: true
-#    fetch-registry: true
-#  instance:
-#    prefer-ip-address: true
-#    lease-renewal-interval-in-seconds: 30
 
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970

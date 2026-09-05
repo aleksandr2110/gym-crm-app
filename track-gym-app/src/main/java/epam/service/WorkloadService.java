@@ -36,12 +36,12 @@ public class WorkloadService {
         int duration = request.getTrainingDuration();
 
         switch (request.getActionType()) {
-            case "add":
+            case ADD:
                 log.debug("Adding {} minutes to {}-{} for trainer {}",
                         duration, year, month, request.getUsername());
                 workload.updateWorkload(year, month, duration);
                 break;
-            case "delete":
+            case DELETE:
                 log.debug("Removing {} minutes from {}-{} for trainer {}",
                         duration, year, month, request.getUsername());
                 workload.updateWorkload(year, month, -duration);

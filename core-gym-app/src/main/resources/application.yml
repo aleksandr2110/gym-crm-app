@@ -1,12 +1,6 @@
 spring:
   application:
-    name: gym-crm-system
-
-  activemq:
-    broker-url: tcp://localhost:61616
-    user: admin
-    password: admin
-
+    name: core-gym-app
   datasource:
     username: root
     password: sqlpas
@@ -24,16 +18,22 @@ spring:
     enabled: true
     change-log: classpath:data/db-changelog-master.xml
 
-#  cloud:
-#    openfeign:
-#      circuitbreaker:
-#        enabled: false
-#      client:
-#        config:
-#          default:
-#            connect-timeout: 5000
-#            read-timeout: 5000
-#            logger-level: basic
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: false
+      client:
+        config:
+          default:
+            connect-timeout: 5000
+            read-timeout: 5000
+            logger-level: basic
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
@@ -49,44 +49,10 @@ eureka:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 30
 
-#resilience4j:
-#  circuitbreaker:
-#    configs:
-#      default:
-#        sliding-window-type: count_based
-#        register-health-indicator: true
-#        sliding-window-size: 10
-#        minimum-number-of-calls: 5
-#        permitted-number-of-calls-in-half-open-state: 3
-#        automatic-transition-from-open-to-half-open-enabled: true
-#        wait-duration-in-open-state: 5s
-#        failure-rate-threshold: 50
-#        slow-call-rate-threshold: 50
-#        slow-call-duration-threshold: 2s
-#        event-consumer-buffer-size: 10
-#        record-exceptions:
-#          - java.io.IOException
-#          - feign.FeignException
-#        ignore-exceptions:
-#          - java.lang.IllegalArgumentException
-#    instances:
-#      workloadService:
-#        base-config: default
-#  retry:
-#    instances:
-#      workloadService:
-#        max-attempts: 3
-#        wait-duration: 500ms
-#        retry-exceptions:
-#          - java.io.IOException
-#          - feign.RetryableException
-
-
   jackson:
     deserialization:
       fail-on-unknown-properties: false
       accept-single-value-as-array: true
-
 
 
 management:
