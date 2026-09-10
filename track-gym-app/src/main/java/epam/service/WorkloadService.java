@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -30,6 +30,7 @@ public class WorkloadService {
 
         workload.setFirstName(request.getFirstName());
         workload.setLastName(request.getLastName());
+        workload.setIsActive(request.getIsActive());
 
         int year = request.getTrainingDate().getYear();
         int month = request.getTrainingDate().getMonthValue();
@@ -59,7 +60,7 @@ public class WorkloadService {
         return workloadRepository.findByUsername(username).orElse(null);
     }
 
-    public Map<String, TrainerWorkload> getAllWorkloads() {
+    public List<TrainerWorkload> getAllWorkloads() {
         log.debug("Retrieving all trainer workloads");
         return workloadRepository.findAll();
     }

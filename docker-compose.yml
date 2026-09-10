@@ -77,6 +77,22 @@ services:
     networks:
       - monitoring
 
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_container
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secretpassword
+      - MONGO_INITDB_DATABASE=dev_db
+#    volumes:
+#      - mongodb_data:/var/lib/db
+#      - mongodb_data:/data/db
+    networks:
+      - microservice-network
+
   track-gym-app:
     container_name: work-load-service
     build: track-gym-app
@@ -87,9 +103,18 @@ services:
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_RABBITMQ_USERNAME=guest
       - SPRING_RABBITMQ_PASSWORD=guest
+      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_USERNAME=root
+      - SPRING_DATA_MONGODB_PASSWORD=secretpassword
+      - SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE=admin
+      - SPRING_DATA_MONGODB_DATABASE=dev_db
     #      - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - rabbitmq
+      - mongodb
+    links:
+      - mongodb
     networks:
       - microservice-network
 
@@ -103,3 +128,5 @@ networks:
 volumes:
   rabbitmq_data:
   prometheus-data:
+  mongo_data:
+    driver: local

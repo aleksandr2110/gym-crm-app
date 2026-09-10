@@ -47,6 +47,16 @@ public class TrainingControllerImpl implements TrainingController {
     }
 
     @Override
+    public ResponseEntity<Void> deleteTraining(Long id) {
+        log.info("Delete training by training id: {}", id);
+
+        facadeGymCrmSystem.deleteTraining(id);
+
+        log.info("Training deleted successfully by id: {}", id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Override
     public ResponseEntity<List<TrainingTraineeDTO>> getTraineeTrainings(TraineeTrainingsRequestDTO filterRequest) {
         log.info("Get trainee trainings request received for username: {}, filters: from={}, to={}, trainer={}, type={}",
                 filterRequest.getUsername(), filterRequest.getPeriodFrom(), filterRequest.getPeriodTo(),

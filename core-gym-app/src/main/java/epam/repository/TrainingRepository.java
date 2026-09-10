@@ -36,6 +36,11 @@ public class TrainingRepository {
         }
     }
 
+    public void delete(Training training) {
+        entityManager.remove(training);
+        log.info("Training deleted: {}", training.getTrainingName());
+    }
+
     public Training findTrainingById(Long id) {
         var training = entityManager.find(Training.class, id);
         if (training == null) {

@@ -36,6 +36,16 @@ public interface TrainingController {
             @Parameter(description = "Training creation data", required = true)
             @Valid @RequestBody TrainingRequestDTO request);
 
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete training", description = "Deletes a training by id (hard delete with cascade)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Training deleted successfully"),
+            @ApiResponse(responseCode = "404", description = "Training not found")
+    })
+    ResponseEntity<Void> deleteTraining(
+            @Parameter(description = "Trainee id", required = true)
+            @PathVariable("id") Long id);
+
     @GetMapping("/trainee")
     @Operation(summary = "Get trainee trainings", description = "Retrieves list of trainings for a trainee with optional filters")
     @ApiResponses(value = {

@@ -58,6 +58,18 @@ public class TrainingServiceImpl implements TrainingService {
         workloadService.updateWorkload(WorkloadRequestMapper.fromTraining(training, WorkloadRequest.ActionType.ADD));
     }
 
+    @Transactional
+    @Override
+    public void delete(Long id) {
+        trainingMetrics.decrementActiveTrainings();
+
+        Training training = trainingRepository.findTrainingById(id);
+        trainingRepository.delete(training);
+
+        workloadService.updateWorkload(WorkloadRequestMapper.fromTraining(training, WorkloadRequest.ActionType.DELETE));
+    }
+
+
     @Override
     public Training findTrainingById(Long id) {
         return trainingRepository.findTrainingById(id);

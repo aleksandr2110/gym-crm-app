@@ -4,10 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a376829d-1f9a-426f-a909-6e2d60032bf8" name="Changes" comment=".idea commit 2">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a376829d-1f9a-426f-a909-6e2d60032bf8" name="Changes" comment="setting rabbit-mq">
+      <change afterPath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/repository/MongoWorkloadRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/repository/MongoWorkloadRepositoryBridge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/track-gym-app/src/test/java/epam/messaging/WorkloadMessageConsumerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/track-gym-app/src/test/java/epam/repository/MongoWorkloadRepositoryBridgeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/track-gym-app/src/test/java/epam/service/WorkloadServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/application/FacadeGymCrmSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/application/FacadeGymCrmSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/controller/interfaces/TrainingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/controller/interfaces/TrainingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/controller/rest/TrainingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/controller/rest/TrainingControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/domain/dto/response/TrainingTraineeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/domain/dto/response/TrainingTraineeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/domain/dto/response/TrainingTrainerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/domain/dto/response/TrainingTrainerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/repository/TrainingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/repository/TrainingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/service/TrainingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/service/TrainingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/service/impl/TrainingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core-gym-app/src/main/java/epam/service/impl/TrainingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/track-gym-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/controller/WorkloadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/controller/WorkloadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/domain/model/TrainerWorkload.java" beforeDir="false" afterPath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/domain/model/TrainerWorkload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/domain/model/TrainerYearlySummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/domain/model/TrainerYearlySummary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/domain/repo/WorkloadRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/domain/repo/WorkloadRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/repository/InMemoryWorkloadRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/service/WorkloadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/track-gym-app/src/main/java/epam/service/WorkloadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track-gym-app/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/track-gym-app/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,25 +37,31 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="active-mq" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "aleksandr2110"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;aleksandr2110&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/aleksandr2110/gym-crm-app",
-    "accountId": "10125345-5364-4146-bc1c-5b6b0169fea5"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/aleksandr2110/gym-crm-app&quot;,
+    &quot;accountId&quot;: &quot;10125345-5364-4146-bc1c-5b6b0169fea5&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -47,20 +73,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.EurekaServerApplication.executor": "Run",
-    "Application.GymApplication.executor": "Run",
-    "Application.TrackApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Aleksandr/IdeaProjects/gym-crm-app/core-gym-app/src/test/java",
-    "onboarding.tips.debug.path": "C:/Users/Aleksandr/IdeaProjects/gym-crm-app/track-gym-app/src/main/java/epam/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GymApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TrackApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MongoWorkloadRepositoryBridgeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MongoWorkloadRepositoryBridgeTest.testFindWorkloadByUsername.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MongoWorkloadRepositoryBridgeTest.testShouldFindAllWorkloads.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MongoWorkloadRepositoryBridgeTest.testShouldFindByUsernameWhenNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MongoWorkloadRepositoryBridgeTest.testShouldSaveWorkload.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.testReceiveWorkloadMessageWithoutActionType.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.testReceiveWorkloadMessageWithoutEmptyUsername.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.testReceiveWorkloadMessageWithoutTrainingDate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.testReceiveWorkloadMessageWithoutTrainingDuration.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.testShouldHandleValidWorkloadMessage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.testShouldHandleValidWorkloadMessageWithoutTransactionId.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadMessageConsumerTest.testShouldRejectWorkloadMessageWithoutUsername.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldAccumulateTrainingDuration.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldAddTrainingDuration.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldGetAllWorkloads.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldNotAllowNegativeDuration.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldReturnNullForNonExistedTrainer.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldStoreMultipleMountsAndYears.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldSubtractTrainingDuration.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkloadServiceTest.testShouldUpdateTrainerInfo.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aleksandr/IdeaProjects/gym-crm-app/core-gym-app/src/test/java&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Aleksandr/IdeaProjects/gym-crm-app/track-gym-app/src/main/java/epam/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app\core-gym-app\src\test\java" />
@@ -69,21 +119,11 @@
       <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app\eureka-server" />
       <recent name="C:\Users\Aleksandr\IdeaProjects\gym-crm-app\core-gym-app" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="epam.service" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.TrackApplication">
-    <configuration name="EurekaServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="epam.EurekaServerApplication" />
-      <module name="eureka-server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="epam.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GymApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="epam.GymApplication" />
       <module name="core-gym-app" />
@@ -110,11 +150,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MongoWorkloadRepositoryBridgeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="track-gym-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="epam.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="epam.repository" />
+      <option name="MAIN_CLASS_NAME" value="epam.repository.MongoWorkloadRepositoryBridgeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoWorkloadRepositoryBridgeTest.testShouldFindAllWorkloads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="track-gym-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="epam.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="epam.repository" />
+      <option name="MAIN_CLASS_NAME" value="epam.repository.MongoWorkloadRepositoryBridgeTest" />
+      <option name="METHOD_NAME" value="testShouldFindAllWorkloads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoWorkloadRepositoryBridgeTest.testShouldFindByUsernameWhenNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="track-gym-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="epam.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="epam.repository" />
+      <option name="MAIN_CLASS_NAME" value="epam.repository.MongoWorkloadRepositoryBridgeTest" />
+      <option name="METHOD_NAME" value="testShouldFindByUsernameWhenNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TrackApplication" />
         <item itemvalue="Application.GymApplication" />
-        <item itemvalue="Application.EurekaServerApplication" />
+        <item itemvalue="Application.TrackApplication" />
+        <item itemvalue="JUnit.MongoWorkloadRepositoryBridgeTest.testShouldFindAllWorkloads" />
+        <item itemvalue="JUnit.MongoWorkloadRepositoryBridgeTest.testShouldFindByUsernameWhenNotFound" />
+        <item itemvalue="JUnit.MongoWorkloadRepositoryBridgeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +263,151 @@
       <option name="project" value="LOCAL" />
       <updated>1788004068379</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="mvn commit">
+      <option name="closed" value="true" />
+      <created>1788005160706</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1788005160706</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fixed docker and yml files">
+      <option name="closed" value="true" />
+      <created>1788012003375</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1788012003376</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fixed docker file">
+      <option name="closed" value="true" />
+      <created>1788012630503</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1788012630504</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fixed docker and yml files">
+      <option name="closed" value="true" />
+      <created>1788024052750</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1788024052750</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed docker and yml files">
+      <option name="closed" value="true" />
+      <created>1788079294681</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1788079294681</updated>
+    </task>
+    <task id="LOCAL-00012" summary="explained in profile dev yml file">
+      <option name="closed" value="true" />
+      <created>1788080179237</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1788080179237</updated>
+    </task>
+    <task id="LOCAL-00013" summary="activemq">
+      <option name="closed" value="true" />
+      <created>1788184917091</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1788184917091</updated>
+    </task>
+    <task id="LOCAL-00014" summary="prometheus fixed">
+      <option name="closed" value="true" />
+      <created>1788185389607</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1788185389607</updated>
+    </task>
+    <task id="LOCAL-00015" summary="prometheus fixed">
+      <option name="closed" value="true" />
+      <created>1788186178988</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1788186178990</updated>
+    </task>
+    <task id="LOCAL-00016" summary="prometheus fixed line 38">
+      <option name="closed" value="true" />
+      <created>1788186534020</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1788186534021</updated>
+    </task>
+    <task id="LOCAL-00017" summary="url mysql:3307/ fixed">
+      <option name="closed" value="true" />
+      <created>1788189622862</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1788189622862</updated>
+    </task>
+    <task id="LOCAL-00018" summary="setting activemq">
+      <option name="closed" value="true" />
+      <created>1788453769067</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1788453769068</updated>
+    </task>
+    <task id="LOCAL-00019" summary="setting activemq">
+      <option name="closed" value="true" />
+      <created>1788508287109</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1788508287109</updated>
+    </task>
+    <task id="LOCAL-00020" summary="setting activemq2">
+      <option name="closed" value="true" />
+      <created>1788508565207</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1788508565207</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fixed setting activemq">
+      <option name="closed" value="true" />
+      <created>1788541577921</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1788541577921</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fixed setting activemq">
+      <option name="closed" value="true" />
+      <created>1788545629892</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1788545629892</updated>
+    </task>
+    <task id="LOCAL-00023" summary="not fixed setting activemq">
+      <option name="closed" value="true" />
+      <created>1788545767691</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1788545767691</updated>
+    </task>
+    <task id="LOCAL-00024" summary="setting rabbit-mq">
+      <option name="closed" value="true" />
+      <created>1788606309000</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1788606309000</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -184,6 +417,19 @@
     <MESSAGE value="track gym app commit" />
     <MESSAGE value=".idea commit" />
     <MESSAGE value=".idea commit 2" />
-    <option name="LAST_COMMIT_MESSAGE" value=".idea commit 2" />
+    <MESSAGE value="mvn commit" />
+    <MESSAGE value="fixed docker file" />
+    <MESSAGE value="fixed docker and yml files" />
+    <MESSAGE value="explained in profile dev yml file" />
+    <MESSAGE value="activemq" />
+    <MESSAGE value="prometheus fixed" />
+    <MESSAGE value="prometheus fixed line 38" />
+    <MESSAGE value="url mysql:3307/ fixed" />
+    <MESSAGE value="setting activemq" />
+    <MESSAGE value="setting activemq2" />
+    <MESSAGE value="fixed setting activemq" />
+    <MESSAGE value="not fixed setting activemq" />
+    <MESSAGE value="setting rabbit-mq" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting rabbit-mq" />
   </component>
 </project>

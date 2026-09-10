@@ -4,31 +4,44 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
 @Builder
+@Document(collection = "trainer_workloads")
+@CompoundIndex(def = "{'firstName': 1, 'lastName': 1}", name = "name_indx")
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrainerWorkload {
 
+
+    @Id
+    private String id;
+
+    @Indexed(unique = true)
     private String username;
     private String firstName;
     private String lastName;
     private Boolean isActive;
 
     @Builder.Default
-    private Map<Integer, TrainerYearlySummary> years = new HashMap<>();
+    private Map<String, TrainerYearlySummary> years = new HashMap<>();
 
     public void updateWorkload(int year, int month, int duration) {
-        years.computeIfAbsent(year, k -> new TrainerYearlySummary())
+        String yearKey = String.valueOf(year);
+        years.computeIfAbsent(yearKey, k -> new TrainerYearlySummary())
                 .updateMonth(month, duration);
     }
 
     public int getTotalDuration(int year, int month) {
-        return years.getOrDefault(year, new TrainerYearlySummary())
+        String yearKey = String.valueOf(year);
+        return years.getOrDefault(yearKey, new TrainerYearlySummary())
                 .getMonthDuration(month);
     }
 }

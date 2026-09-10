@@ -180,6 +180,10 @@ public class FacadeGymCrmSystem {
         trainingService.save(training);
     }
 
+    public void deleteTraining(Long id) {
+        trainingService.delete(id);
+    }
+
     @Transactional
     public List<TrainingTraineeDTO> getTraineeTrainings(TraineeTrainingsRequestDTO filterRequest) {
         String username = filterRequest.getUsername();
@@ -192,6 +196,7 @@ public class FacadeGymCrmSystem {
         List<TrainingTraineeDTO> trainingTraineeDTOS = trainingsList.stream().map(
                 training -> {
                     var trainingResponse = new TrainingTraineeDTO();
+                    trainingResponse.setId(training.getId());
                     trainingResponse.setTrainingName(training.getTrainingName());
                     trainingResponse.setTrainingType(training.getTrainingType().getTrainingTypeName().getName());
                     trainingResponse.setTrainingDate(training.getTrainingDate());
@@ -215,6 +220,7 @@ public class FacadeGymCrmSystem {
         List<TrainingTrainerDTO> trainingDTOs = trainings.stream().map(
                 training -> {
                     var trainingResponse = new TrainingTrainerDTO();
+                    trainingResponse.setId(training.getId());
                     trainingResponse.setTrainingName(training.getTrainingName());
                     trainingResponse.setTrainingType(training.getTrainingType().getTrainingTypeName().getName());
                     trainingResponse.setTrainingDate(training.getTrainingDate());

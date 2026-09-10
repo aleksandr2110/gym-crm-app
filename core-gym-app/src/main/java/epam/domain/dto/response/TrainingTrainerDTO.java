@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 @Schema(description = "Training trainer basic information")
 public class TrainingTrainerDTO {
 
+    @Schema(description = "Training id", example = "78")
+    private Long id;
     @Schema(description = "Trainee username", example = "Ricci.Deep")
     private String traineeName;
     @Schema(description = "Training specialization name", example = "Java")
