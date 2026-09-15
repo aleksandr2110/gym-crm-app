@@ -24,9 +24,7 @@ services:
     container_name: rabbitmq
     restart: unless-stopped
     ports:
-      # AMQP protocol port for application connections
       - "5672:5672"
-      # HTTP API and Management UI port
       - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: guest
@@ -53,7 +51,6 @@ services:
       - SPRING_RABBITMQ_USERNAME=guest
       - SPRING_RABBITMQ_PASSWORD=guest
       - DATABASE_PORT=3307
-    #      - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - prometheus
       - rabbitmq
@@ -87,9 +84,6 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=secretpassword
       - MONGO_INITDB_DATABASE=dev_db
-#    volumes:
-#      - mongodb_data:/var/lib/db
-#      - mongodb_data:/data/db
     networks:
       - microservice-network
 
@@ -109,7 +103,6 @@ services:
       - SPRING_DATA_MONGODB_PASSWORD=secretpassword
       - SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE=admin
       - SPRING_DATA_MONGODB_DATABASE=dev_db
-    #      - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - rabbitmq
       - mongodb

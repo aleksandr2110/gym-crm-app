@@ -3,6 +3,7 @@ package epam.controller.exception;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,10 +22,16 @@ public class ExceptionHandlerController {
         return createError(HttpStatus.UNAUTHORIZED, e.getMessage());
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Error handleEntityNotFoundException(IllegalArgumentException e) {
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Error handleCredentialsNotValidFoundException(BadCredentialsException e) {
         return createError(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Error handleEntityNotFoundException(IllegalArgumentException e) {
+        return createError(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

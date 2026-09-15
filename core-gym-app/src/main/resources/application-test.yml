@@ -23,9 +23,7 @@ spring:
 
   liquibase:
     enabled: true
-    change-log: classpath:data/db-changelog-master.xml
-    parameters:
-      liquibase.duplicateFileMode: "WARN"
+    change-log: classpath:db/db-changelog-master.xml
 
   jackson:
     deserialization:

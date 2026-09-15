@@ -20,7 +20,7 @@ public interface TraineeService {
     void changePassword(String username, String newPassword);
     Trainee updateProfile(Trainee updateTrainee);
     void activateDeactivateTrainee(String username, boolean isActive);
-    Trainee authenticateTrainee(String username, String password);
+    //Trainee authenticateTrainee(String username, String password);
     void deleteProfile(String username);
     List<Trainer> updateTrainersList(String traineeUsername, List<String> trainerUsernames);
     List<String> findUsernamesLike(String likeUsername);

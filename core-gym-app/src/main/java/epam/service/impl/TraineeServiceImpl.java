@@ -113,23 +113,6 @@ public class TraineeServiceImpl implements TraineeService {
 
     @Transactional
     @Override
-    public Trainee authenticateTrainee(String username, String password) {
-        if (username == null || password == null) {
-            throw new UnauthorizedException("Trainee is not authenticated");
-        }
-        if (username.equals("") || password.equals("")) {
-            throw new UnauthorizedException("Trainee is not authenticated");
-        }
-        var entity = traineeRepository.findByUsername(username).orElseThrow(()
-                -> new IllegalArgumentException("Trainee not found with username: " + username));
-        if (!entity.getPassword().equals(password)) {
-            throw new UnauthorizedException("Trainee is not authenticated: " + username);
-        }
-        return entity;
-    }
-
-    @Transactional
-    @Override
     public void deleteProfile(String username) {
         traineeRepository.delete(username);
     }
