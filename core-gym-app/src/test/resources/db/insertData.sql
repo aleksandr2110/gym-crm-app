@@ -1,6 +1,6 @@
 INSERT INTO users (first_name, last_name, username, password, is_active) VALUES
     ('Anna', 'Lee', 'Anna.Lee', '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', true),
-    ('Juli', 'Huston', 'Juli.Huston', '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', true),
+    ('Juli', 'Huston', 'Juli.Huston', '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', false),
     ('Marina', 'Merkylova', 'Marina.Merkylova', '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', true),
     ('Martin', 'Brown', 'Martin.Brown', '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', true),
     ('Bob', 'Wilson', 'Bob.Wilson', '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', false),

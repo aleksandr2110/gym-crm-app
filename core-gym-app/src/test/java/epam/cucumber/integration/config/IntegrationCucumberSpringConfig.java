@@ -1,4 +1,4 @@
-package epam.cucumber.component.config;
+package epam.cucumber.integration.config;
 
 import io.cucumber.spring.CucumberContextConfiguration;
 import jakarta.persistence.EntityManager;
@@ -17,22 +17,24 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.SharedEntityManagerCreator;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.testcontainers.containers.RabbitMQContainer;
+import org.testcontainers.utility.DockerImageName;
 
 import javax.sql.DataSource;
 
 @CucumberContextConfiguration
-@SpringBootTest(classes = {
-        CucumberSpringConfig.Configuration.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class CucumberSpringConfig {
+public class IntegrationCucumberSpringConfig {
 
     @MockitoBean
     private RabbitTemplate rabbitTemplate;
-
 
     @EnableTransactionManagement
     @ComponentScan(basePackages = {
@@ -90,5 +92,23 @@ public class CucumberSpringConfig {
         public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
             return SharedEntityManagerCreator.createSharedEntityManager(entityManagerFactory);
         }
+    }
+
+    // Spin up official RabbitMQ container with management plugin
+    static final RabbitMQContainer RABBIT_MQ_CONTAINER = new RabbitMQContainer(
+            DockerImageName.parse("rabbitmq:4-management")
+    );
+
+    static {
+        RABBIT_MQ_CONTAINER.start();
+    }
+
+    // Automatically override Spring Boot RabbitMQ properties with Testcontainer's dynamic ports
+    @DynamicPropertySource
+    static void rabbitMqProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.rabbitmq.host", RABBIT_MQ_CONTAINER::getHost);
+        registry.add("spring.rabbitmq.port", RABBIT_MQ_CONTAINER::getAmqpPort);
+        registry.add("spring.rabbitmq.username", RABBIT_MQ_CONTAINER::getAdminUsername);
+        registry.add("spring.rabbitmq.password", RABBIT_MQ_CONTAINER::getAdminPassword);
     }
 }

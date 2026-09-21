@@ -1,5 +1,6 @@
 package epam.domain.entity;
 
+
 public enum TrainingTypeName {
 
     JAVA("Java"), C("C"), PYTHON("Python"), ANGULAR("Angular"), REACT("React"),
@@ -28,17 +29,9 @@ public enum TrainingTypeName {
             case "PHP" -> TrainingTypeName.PHP;
             case "BA" -> TrainingTypeName.BA;
             case "QA" -> TrainingTypeName.QA;
-            default -> TrainingTypeName.DEVOPS;
+            default -> throw new IllegalArgumentException("Not valid training type: " + name);
         };
         return trainingTypeName;
     }
 
-    public static boolean isExists(String t){
-        try {
-            TrainingTypeName.valueOf(t.toUpperCase());
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-    }
 }

@@ -3,7 +3,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import epam.domain.dto.request.TraineeRequestDTO;
 import epam.domain.dto.request.UpdateTraineeTrainersRequestDTO;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,7 +14,6 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 public class TraineeStepDefinition {
@@ -45,29 +43,6 @@ public class TraineeStepDefinition {
                         .content(objectMapper.writeValueAsString(request))
         ).andReturn();
 
-        context.setLastResult(result);
-    }
-
-    @Then("the response contains a username {string}")
-    public void theResponseContainsUsername(String expectedUsername) throws Exception {
-        assertThat(context.getLastResponseBody()).contains(expectedUsername);
-    }
-
-    @Then("the response contains a generated password")
-    public void theResponseContainsAGeneratedPassword() throws Exception {
-        assertThat(context.getLastResponseBody()).contains("password");
-    }
-
-    @When("Using patch end-point {string} with param {string} {string} and param {string} {string}")
-    public void patchingWithParams(String path, String param1, String value1,
-                                   String param2, String value2) throws Exception {
-        MockHttpServletRequestBuilder builder = patch(path)
-                .param(param1, value1)
-                .param(param2, value2);
-        if (context.isAuthenticated()) {
-            builder = (MockHttpServletRequestBuilder) builder.with(context.getSecurityProcessor());
-        }
-        MvcResult result = mockMvc.perform(builder).andReturn();
         context.setLastResult(result);
     }
 

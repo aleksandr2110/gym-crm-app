@@ -13,8 +13,7 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 public class CommonStepDefinition {
 
@@ -30,16 +29,6 @@ public class CommonStepDefinition {
     @Before
     @Transactional
     public void cleanUpDatabase() {
-//        entityManager.createNativeQuery("DELETE FROM trainings").executeUpdate();
-//        entityManager.createNativeQuery("DELETE FROM trainers_trainees").executeUpdate();
-//        entityManager.createNativeQuery("DELETE FROM trainers").executeUpdate();
-//        entityManager.createNativeQuery("DELETE FROM trainees").executeUpdate();
-//        entityManager.createNativeQuery("DELETE FROM users").executeUpdate();
-
-
-//        entityManager.createNativeQuery("ALTER TABLE users ALTER COLUMN id RESTART WITH 100").executeUpdate();
-//        entityManager.createNativeQuery("ALTER TABLE trainings ALTER COLUMN id RESTART WITH 100").executeUpdate();
-//        entityManager.flush();
         context.clearAuthentication();
     }
 
@@ -78,6 +67,29 @@ public class CommonStepDefinition {
     @When("Deleting {string}")
     public void deleting(String path) throws Exception {
         MockHttpServletRequestBuilder builder = delete(path);
+        if (context.isAuthenticated()) {
+            builder = (MockHttpServletRequestBuilder) builder.with(context.getSecurityProcessor());
+        }
+        MvcResult result = mockMvc.perform(builder).andReturn();
+        context.setLastResult(result);
+    }
+
+    @Then("the response contains a username {string}")
+    public void theResponseContainsUsername(String expectedUsername) throws Exception {
+        assertThat(context.getLastResponseBody()).contains(expectedUsername);
+    }
+
+    @Then("the response contains a generated password")
+    public void theResponseContainsAGeneratedPassword() throws Exception {
+        assertThat(context.getLastResponseBody()).contains("password");
+    }
+
+    @When("Using patch end-point {string} with param {string} {string} and param {string} {string}")
+    public void patchingWithParams(String path, String param1, String value1,
+                                   String param2, String value2) throws Exception {
+        MockHttpServletRequestBuilder builder = patch(path)
+                .param(param1, value1)
+                .param(param2, value2);
         if (context.isAuthenticated()) {
             builder = (MockHttpServletRequestBuilder) builder.with(context.getSecurityProcessor());
         }
