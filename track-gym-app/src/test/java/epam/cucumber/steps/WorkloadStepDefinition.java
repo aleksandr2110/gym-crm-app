@@ -61,9 +61,12 @@ public class WorkloadStepDefinition {
                 .actionType(WorkloadRequest.ActionType.valueOf(action))
                 .build();
 
+        String token = authToken();
+        System.out.println("token " + token);
+
         MvcResult result = mockMvc.perform(
                 post("/api/workload")
-                        .header("Authorization", authToken())
+                        .header("Authorization", token)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request))
         ).andReturn();
@@ -86,13 +89,13 @@ public class WorkloadStepDefinition {
 
     @Given("a workload exists for trainer {string}")
     public void aWorkloadExistsForTrainer(String username) {
-        aWorkloadExistsForTrainer(username, 60, 2025, 6);
+        aWorkloadExistsForTrainer(username, 60, 2026, 11);
     }
 
     @Given("workloads exist for trainers {string} and {string}")
     public void workloadsExistForTrainers(String username1, String username2) {
-        aWorkloadExistsForTrainer(username1, 60, 2025, 6);
-        aWorkloadExistsForTrainer(username2, 90, 2025, 7);
+        aWorkloadExistsForTrainer(username1, 60, 2026, 10);
+        aWorkloadExistsForTrainer(username2, 90, 2026, 11);
     }
 
 

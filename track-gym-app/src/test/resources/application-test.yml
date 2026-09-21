@@ -1,28 +1,10 @@
-de:
-  flapdoodle:
-    mongodb:
-      embedded:
-        version: 7.0.0
 
 spring:
-  data:
-    mongodb:
-      database: test-db
-#      auto-index-creation: true
-      host: localhost
-      port: 0
-      username: guest
-      password: guest
-
-#  rabbitmq:
-#    listener:
-#      simple:
-#        auto-startup: false
-    rabbitmq:
-      host: localhost
-      port: 5672
-      username: guest
-      password: guest
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
   cloud:
     discovery:
