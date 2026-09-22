@@ -6,6 +6,7 @@ import epam.domain.repo.WorkloadRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.List;
 
@@ -35,6 +36,11 @@ public class WorkloadService {
         int year = request.getTrainingDate().getYear();
         int month = request.getTrainingDate().getMonthValue();
         int duration = request.getTrainingDuration();
+
+        if (duration < 0) {
+            throw new IllegalArgumentException("Duration value not valid");
+        }
+
 
         switch (request.getActionType()) {
             case ADD:

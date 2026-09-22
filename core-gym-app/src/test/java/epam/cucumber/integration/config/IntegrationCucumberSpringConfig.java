@@ -94,7 +94,6 @@ public class IntegrationCucumberSpringConfig {
         }
     }
 
-    // Spin up official RabbitMQ container with management plugin
     static final RabbitMQContainer RABBIT_MQ_CONTAINER = new RabbitMQContainer(
             DockerImageName.parse("rabbitmq:4-management")
     );

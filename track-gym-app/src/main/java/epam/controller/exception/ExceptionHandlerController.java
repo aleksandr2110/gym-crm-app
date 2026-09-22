@@ -1,6 +1,7 @@
 package epam.controller.exception;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,6 +15,12 @@ public class ExceptionHandlerController {
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Error handleEntityNotFoundException(UnauthorizedException e) {
         return createError(HttpStatus.UNAUTHORIZED, e.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public  Error handleValidationExceptions(IllegalArgumentException ex) {
+        return createError(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
     private Error createError(HttpStatus code, String message) {
