@@ -9,8 +9,6 @@ WORKDIR /application/
 
 ADD ./target/*.jar app.jar
 
-ENV INTEGRATIONS_ENABLED=false
-
 EXPOSE 8083
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
